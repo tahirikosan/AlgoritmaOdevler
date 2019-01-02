@@ -3,26 +3,19 @@
 #include<string>
 using namespace std;
 
-//int recursive(int a);
-
 typedef struct n {
-	char *ad;
-	char *soyad;
+	char ad[10];
+	char soyad[20];
 	int x;
 	n * next;
 	n * prev;
 }node;
 
 
-
 void bastir(node *root);
-//void ekle(node *r, int limit);
-//void elemanEkle(node *r, int poz);
 node *siraliElemanEkle(node *r, int deger, char ad[10], char soyad[20]);
 node *elemanSil(node *r, int deger);
 int main() {
-
-	
 
 	node *root = NULL;
 	int secenek;
@@ -59,7 +52,6 @@ int main() {
 		}
 	} while (true);
 	
-
 	system("pause");
 	return 0;
 
@@ -100,15 +92,15 @@ node *siraliElemanEkle(node *r, int deger, char ad[10], char soyad[20]) {
 		node *r = (node *)malloc(sizeof(node));
 		r->next = NULL;
 		r->x = deger;
-		r->ad = ad;
-		r->soyad = soyad;
+		strcpy_s(r->ad, ad);
+		strcpy_s(r->soyad, soyad);
 		return r;
 	}
 	if (r->x > deger) {
 		node *temp = (node *)malloc(sizeof(node));
 		temp->x = deger;
-	    temp->ad = ad;
-		temp->soyad = soyad;
+		strcpy_s(temp->ad, ad);
+		strcpy_s(temp->soyad, soyad);
 		temp->next = r;
 		r->prev = temp;
 		return temp;
@@ -125,8 +117,8 @@ node *siraliElemanEkle(node *r, int deger, char ad[10], char soyad[20]) {
 		temp->next->prev = temp;
 	}
 	temp->x = deger;
-	temp->ad = ad;
-    temp->soyad = soyad;
+	strcpy_s(temp->ad, ad);
+	strcpy_s(temp->soyad, soyad);
 	return r;
 
 }
@@ -145,6 +137,5 @@ void bastir(node *root) {
 	}
 
 }
-
 
 
